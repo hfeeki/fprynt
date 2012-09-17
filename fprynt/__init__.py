@@ -17,21 +17,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+from collections import namedtuple
+
 from libfprynt import Reader
 
 
-class _fingers:
-    def __init__(self):
-        fingers = ["LeftThumb", "LeftIndex", "LeftMiddle",
-                   "LeftRing", "LeftLittle", "RightThumb",
-                   "RightIndex", "RightMiddle", "RightRing",
-                   "RightLittle"]
+_fingers = namedtuple("Fingers", ["LeftThumb", "LeftIndex",
+                                  "LeftMiddle", "LeftRing",
+                                  "LeftLittle", "RightThumb",
+                                  "RightIndex", "RightMiddle",
+                                  "RightRing", "RightLittle"])
 
-        for i, f in enumerate(fingers):
-            setattr(self, f, i+1)
-
-    def __iter__(self):
-        return iter(range(1, 11))
-
-Fingers = _fingers()
+Fingers = _fingers(*range(1, 11))
 
